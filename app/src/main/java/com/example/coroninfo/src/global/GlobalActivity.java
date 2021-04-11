@@ -30,6 +30,13 @@ public class GlobalActivity extends AppCompatActivity implements GlobalScreen {
     }
 
     @Override
+    protected void onResume()
+    {
+        super.onResume();
+        globalPresenter.getGlobalTotal();
+    }
+
+    @Override
     public void showGlobalTotal(int[] totalData) {
         // TODO: show data in global screen
     }
