@@ -1,4 +1,4 @@
-package com.example.coroninfo.global;
+package com.example.coroninfo.src.global;
 
 import androidx.appcompat.app.AppCompatActivity;
 
