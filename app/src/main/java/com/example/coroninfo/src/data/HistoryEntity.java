@@ -3,7 +3,7 @@ package com.example.coroninfo.src.data;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "history")
 public class HistoryEntity {
     @PrimaryKey
     public int id;
