@@ -39,7 +39,7 @@ public class GlobalActivity extends AppCompatActivity implements GlobalScreen {
         HistoryApi historyApiService = retrofit.create(HistoryApi.class);
 
         // test
-        Call<TotalResponse> call = totalApiService.getTotalData("Hungary");
+        Call<TotalResponse> call = totalApiService.getTotalData("Global");
         call.enqueue(new Callback<TotalResponse>() {
             @Override
             public void onResponse(Call<TotalResponse> call, Response<TotalResponse> response) {
@@ -49,7 +49,14 @@ public class GlobalActivity extends AppCompatActivity implements GlobalScreen {
                     return;
                 }
 
-                Log.d("GlobalActivity", "onResponse");
+                TotalResponse test = response.body();
+                Log.d("GlobalActivity", "onResponse GOOD");
+
+                Log.d("GlobalActivity", "confirmed: " + test.getTotalData().getConfirmed());
+                Log.d("GlobalActivity", "recovered: " + test.getTotalData().getRecovered());
+                Log.d("GlobalActivity", "death: " + test.getTotalData().getDeaths());
+                Log.d("GlobalActivity", "country: " + test.getTotalData().getCountry());
+
             }
 
             @Override

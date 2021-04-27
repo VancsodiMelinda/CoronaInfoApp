@@ -10,8 +10,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Total   {
   
-  @SerializedName("population")
-  private Integer population = null;
+  //@SerializedName("population")
+  //private Integer population = null;
   
   @SerializedName("confirmed")
   private Integer confirmed = null;
@@ -24,7 +24,8 @@ public class Total   {
   
   @SerializedName("country")
   private String country = null;
-  
+
+  /*
   @SerializedName("sq_km_area")
   private Integer sqKmArea = null;
   
@@ -57,16 +58,17 @@ public class Total   {
   
   @SerializedName("updated")
   private Date updated = null;
-
+*/
 
   // getters and setters
+  /*
   public Integer getPopulation() {
     return population;
   }
   public void setPopulation(Integer population) {
     this.population = population;
   }
-
+*/
   public Integer getConfirmed() {
     return confirmed;
   }
@@ -94,7 +96,7 @@ public class Total   {
   public void setCountry(String country) {
     this.country = country;
   }
-
+/*
   public Integer getSqKmArea() {
     return sqKmArea;
   }
@@ -171,9 +173,9 @@ public class Total   {
   public void setUpdated(Date updated) {
     this.updated = updated;
   }
+*/
 
-
-
+/*
   @RequiresApi(api = Build.VERSION_CODES.KITKAT)
   @Override
   public boolean equals(Object o) {
@@ -232,15 +234,19 @@ public class Total   {
     sb.append("}");
     return sb.toString();
   }
+*/
 
   /**
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
+
+  /*
   private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
+   */
 }
