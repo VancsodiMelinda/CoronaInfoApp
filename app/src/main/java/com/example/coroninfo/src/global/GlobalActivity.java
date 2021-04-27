@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.coroninfo.R;
+import com.example.coroninfo.src.model.HistoryResponse;
 import com.example.coroninfo.src.model.Total;
 import com.example.coroninfo.src.model.TotalResponse;
 import com.example.coroninfo.src.network.HistoryApi;
@@ -13,6 +14,9 @@ import com.example.coroninfo.src.network.TotalApi;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,8 +42,9 @@ public class GlobalActivity extends AppCompatActivity implements GlobalScreen {
         TotalApi totalApiService = retrofit.create(TotalApi.class);
         HistoryApi historyApiService = retrofit.create(HistoryApi.class);
 
-        // test
-        Call<TotalResponse> call = totalApiService.getTotalData("Global");
+        // test TotalApi
+        /*
+        Call<TotalResponse> call = totalApiService.getTotalData("Hungary");
         call.enqueue(new Callback<TotalResponse>() {
             @Override
             public void onResponse(Call<TotalResponse> call, Response<TotalResponse> response) {
@@ -52,10 +57,10 @@ public class GlobalActivity extends AppCompatActivity implements GlobalScreen {
                 TotalResponse test = response.body();
                 Log.d("GlobalActivity", "onResponse GOOD");
 
-                Log.d("GlobalActivity", "confirmed: " + test.getTotalData().getConfirmed());
-                Log.d("GlobalActivity", "recovered: " + test.getTotalData().getRecovered());
-                Log.d("GlobalActivity", "death: " + test.getTotalData().getDeaths());
-                Log.d("GlobalActivity", "country: " + test.getTotalData().getCountry());
+                Log.d("GlobalActivity", "confirmed: " + test.getAllData().getConfirmed());
+                Log.d("GlobalActivity", "recovered: " + test.getAllData().getRecovered());
+                Log.d("GlobalActivity", "death: " + test.getAllData().getDeaths());
+                Log.d("GlobalActivity", "country: " + test.getAllData().getCountry());
 
             }
 
@@ -71,6 +76,39 @@ public class GlobalActivity extends AppCompatActivity implements GlobalScreen {
                 }
                 //Log.d("GlobalActivity", "onFailure: " + t.getMessage());
                 //Log.d("GlobalActivity", "check url: " + call.request().url());
+            }
+        });
+        */
+
+        // test HistoryApi
+
+        Call<HistoryResponse> call2 = historyApiService.getHistoryData("Hungary", "confirmed");
+        call2.enqueue(new Callback<HistoryResponse>() {
+            @Override
+            public void onResponse(Call<HistoryResponse> call, Response<HistoryResponse> response) {
+                if (!response.isSuccessful())
+                {
+                    Log.d("GlobalActivity, history", "code: " + response.code());
+                    return;
+                }
+
+                HistoryResponse test = response.body();
+                Log.d("GlobalActivity, history", "onResponse GOOD");
+
+                Log.d("GlobalActivity, history", "country: " + test.getAllData().getCountry());
+                //Log.d("GlobalActivity, history", "dates: " + test.getAllData().getDates().toString());
+            }
+
+            @Override
+            public void onFailure(Call<HistoryResponse> call, Throwable t) {
+                if (t instanceof IOException)
+                {
+                    Log.d("GlobalActivity, history", "network failure");
+                }
+                else
+                {
+                    Log.d("GlobalActivity", "conversion issue");
+                }
             }
         });
 

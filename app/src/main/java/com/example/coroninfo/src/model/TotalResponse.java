@@ -7,6 +7,6 @@ public class TotalResponse {
     private Total allData = null;
 
     // getters and setters
-    public Total getTotalData() { return allData; }
-    public void setTotalData(Total allData) { this.allData = allData; }
+    public Total getAllData() { return allData; }
+    public void setAllData(Total allData) { this.allData = allData; }
 }

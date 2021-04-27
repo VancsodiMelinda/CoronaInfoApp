@@ -11,7 +11,8 @@ public class History   {
   
   @SerializedName("country")
   private String country = null;
-  
+
+  /*
   @SerializedName("population")
   private Integer population = null;
   
@@ -38,9 +39,10 @@ public class History   {
   
   @SerializedName("capital_city")
   private String capitalCity = null;
-  
+  */
+
   @SerializedName("dates")
-  private String dates = null;
+  private Object dates = null;
 
 
   // getters and setters
@@ -51,6 +53,14 @@ public class History   {
     this.country = country;
   }
 
+  public Object getDates() {
+    return dates;
+  }
+  public void setDates(Object dates) {
+    this.dates = dates;
+  }
+
+  /*
   public Integer getPopulation() {
     return population;
   }
@@ -113,16 +123,17 @@ public class History   {
   public void setCapitalCity(String capitalCity) {
     this.capitalCity = capitalCity;
   }
-
+*/
+  /*
   public String getDates() {
     return dates;
   }
   public void setDates(String dates) {
     this.dates = dates;
   }
+*/
 
-
-
+/*
   @RequiresApi(api = Build.VERSION_CODES.KITKAT)
   @Override
   public boolean equals(Object o) {
@@ -171,15 +182,17 @@ public class History   {
     sb.append("}");
     return sb.toString();
   }
-
+*/
   /**
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
+  /*
   private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
+   */
 }

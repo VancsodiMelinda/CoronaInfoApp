@@ -17,7 +17,7 @@ public interface TotalApi {
    * Get total data by country
    * 
    * @param country country name
-   * @return Call<Total>
+   * @return Call<TotalResponse>
    */
   
   @GET("cases")

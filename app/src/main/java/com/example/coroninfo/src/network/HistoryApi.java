@@ -1,6 +1,8 @@
 package com.example.coroninfo.src.network;
 
 import com.example.coroninfo.src.model.History;
+import com.example.coroninfo.src.model.HistoryResponse;
+
 import retrofit2.Call;
 import retrofit2.http.*;
 import okhttp3.RequestBody;
@@ -16,11 +18,11 @@ public interface HistoryApi {
    * 
    * @param country country name
    * @param status status type
-   * @return Call<History>
+   * @return Call<HistoryResponse>
    */
   
   @GET("history")
-  Call<History> getHistoryData(
+  Call<HistoryResponse> getHistoryData(
     @Query("country") String country, @Query("status") String status
   );
 
