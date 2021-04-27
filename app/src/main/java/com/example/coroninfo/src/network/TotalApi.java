@@ -1,5 +1,7 @@
 package com.example.coroninfo.src.network;
 
+import androidx.room.Delete;
+
 import com.example.coroninfo.src.model.Total;
 import com.example.coroninfo.src.model.TotalResponse;
 
@@ -22,8 +24,24 @@ public interface TotalApi {
   
   @GET("cases")
   Call<TotalResponse> getTotalData(
-    @Query("country") String country
+          @Query("country") String country
   );
 
-  
+  // update total data by country
+  @PUT("cases")
+  Call<TotalResponse> updateTotalData(
+          @Query("country") String country
+  );
+
+  // delete total data by country
+  @DELETE("cases")
+  Call<TotalResponse> deleteTotalDataByCountry(
+          @Query("country") String country
+  );
+
+  // add total data by country
+  @POST("cases")
+  Call<TotalResponse> addTotalDataByCountry(
+          @Query("country") String country
+  );
 }

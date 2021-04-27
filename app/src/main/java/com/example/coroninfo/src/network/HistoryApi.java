@@ -23,8 +23,24 @@ public interface HistoryApi {
   
   @GET("history")
   Call<HistoryResponse> getHistoryData(
-    @Query("country") String country, @Query("status") String status
+          @Query("country") String country, @Query("status") String status
   );
 
-  
+  // update history data by country and status
+  @PUT("history")
+  Call<HistoryResponse> updateHistoryData(
+          @Query("country") String country, @Query("status") String status
+  );
+
+  // delete history data by country and status
+  @DELETE("history")
+  Call<HistoryResponse> deleteHistoryData(
+          @Query("country") String country, @Query("status") String status
+  );
+
+  // add history data by country and status
+  @POST("history")
+  Call<HistoryResponse> addHistoryData(
+          @Query("country") String country, @Query("status") String status
+  );
 }
