@@ -2,10 +2,15 @@ package com.example.coroninfo.src.global;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.coroninfo.R;
+import com.example.coroninfo.src.hungary.HungaryActivity;
 import com.example.coroninfo.src.model.HistoryResponse;
 import com.example.coroninfo.src.model.Total;
 import com.example.coroninfo.src.model.TotalResponse;
@@ -33,6 +38,8 @@ public class GlobalActivity extends AppCompatActivity implements GlobalScreen {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_global);
+
+        configRightButton();  // go to Hungary activity
 
         // retrofit & retrofit service
         Retrofit retrofit = new Retrofit.Builder()
@@ -138,5 +145,17 @@ public class GlobalActivity extends AppCompatActivity implements GlobalScreen {
     @Override
     public void showGlobalTotal(int[] totalData) {
         // TODO: show data in global screen
+    }
+
+    private void configRightButton()
+    {
+        ImageButton toHungaryBtn = (ImageButton) findViewById(R.id.GlobalRightBtn);
+        toHungaryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GlobalActivity.this, HungaryActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
