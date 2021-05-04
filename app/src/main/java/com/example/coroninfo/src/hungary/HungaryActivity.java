@@ -4,16 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.coroninfo.R;
 import com.example.coroninfo.src.about.AboutActivity;
 import com.example.coroninfo.src.global.GlobalActivity;
 
+import java.util.List;
+
 public class HungaryActivity extends AppCompatActivity implements HungaryScreen {
 
     private HungaryPresenter hungaryPresenter = new HungaryPresenter();
+    private static final String TAG = "HungaryActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +52,26 @@ public class HungaryActivity extends AppCompatActivity implements HungaryScreen 
     }
 
     @Override
-    public void showHungaryTotal(int[] totalData) {
-        // TODO: show total data in hungary screen
+    public void showHungaryTotal(String[] totalData) {
+        TextView confirmedTv = (TextView) findViewById(R.id.HungaryTotalConfirmedTv);
+        confirmedTv.setText(totalData[0]);
+
+        TextView deathsTv = (TextView) findViewById(R.id.HungaryTotalDeathsTv);
+        deathsTv.setText(totalData[1]);
+
+        TextView recoveredTv = (TextView) findViewById(R.id.HungaryTotalRecoveredTv);
+        recoveredTv.setText(totalData[2]);
     }
 
     @Override
-    public void showHungaryDaily(int[] dailyData) {
+    public void showHungaryDaily(DataContainer[] dailyData) {
         // TODO: show daily data in hungary screen
+
+        Log.d(TAG, "showHungaryDaily DIV");
+        ListView dailyLv = (ListView) findViewById(R.id.HungaryListLv);
+
+        HistoryListAdapter adapter = new HistoryListAdapter(this, R.layout.list_item, dailyData);
+        dailyLv.setAdapter(adapter);
     }
 
     private void configLeftButton()

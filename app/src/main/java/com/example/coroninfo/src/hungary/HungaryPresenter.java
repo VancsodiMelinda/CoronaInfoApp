@@ -1,10 +1,14 @@
 package com.example.coroninfo.src.hungary;
 
+import android.util.Log;
+
 import com.example.coroninfo.src.global.GlobalScreen;
+import com.example.coroninfo.src.network.RetrofitResponseListener;
 
 public class HungaryPresenter {
 
     HungaryScreen hungaryScreen;
+    private static final String TAG = "HungaryPresenter";
 
     public void attachScreen(HungaryScreen hungaryScreen) {
         this.hungaryScreen = hungaryScreen;
@@ -16,21 +20,61 @@ public class HungaryPresenter {
 
     public void getHungaryTotal()
     {
-        // TODO: get data from API
-        int[] temp = {123, 456, 789};
-        if (hungaryScreen != null)
-        {
-            hungaryScreen.showHungaryTotal(temp);
-        }
+        HungaryInteractor interactor = new HungaryInteractor();
+        interactor.getHungaryTotalDataFromApi(new RetrofitResponseListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "getHungaryTotal got data from API");
+                if (hungaryScreen != null)
+                {
+                    Log.d(TAG, "getHungaryTotal screen is NOT null");
+                    hungaryScreen.showHungaryTotal(interactor.getTotalData());
+                }
+            }
+
+            @Override
+            public void onFailure() {
+                Log.d(TAG, "getHungaryTotal didn't get data from API");
+            }
+        });
     }
 
     public void getHungaryDaily()
     {
-        // TODO: get data from API
-        int[] temp = {321, 654, 987};
-        if (hungaryScreen != null)
-        {
-            hungaryScreen.showHungaryDaily(temp);
-        }
+        Log.d(TAG, "getHungaryDaily got called");
+        HungaryInteractor interactor = new HungaryInteractor();
+        interactor.getHungaryHistoryDataFromApi(new RetrofitResponseListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "getHungaryDaily got data from API");
+                if (hungaryScreen != null)
+                {
+                    Log.d(TAG, "getHungaryDaily screen is NOT null");
+                    hungaryScreen.showHungaryDaily(interactor.getHistoryData());
+                }
+            }
+
+            @Override
+            public void onFailure() {
+                Log.d(TAG, "getHungaryDaily didn't get data from API");
+            }
+        });
+
+        interactor.getHungaryHistoryDataFromApi2(new RetrofitResponseListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "getHungaryDaily got data from API");
+                if (hungaryScreen != null)
+                {
+                    Log.d(TAG, "getHungaryDaily screen is NOT null");
+                    hungaryScreen.showHungaryDaily(interactor.getHistoryData());
+                }
+            }
+
+            @Override
+            public void onFailure() {
+                Log.d(TAG, "getHungaryDaily didn't get data from API");
+            }
+        });
     }
 }

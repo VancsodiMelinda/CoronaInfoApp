@@ -37,20 +37,19 @@ public class GlobalInteractor {
 
     public void getGlobalTotalDataFromAPI(final RetrofitResponseListener retrofitResponseListener)
     {
-        //String[] data = new String[3];
         Call<TotalResponse> call = totalApiService.getTotalData("Global");
         call.enqueue(new Callback<TotalResponse>() {
             @Override
             public void onResponse(Call<TotalResponse> call, Response<TotalResponse> response) {
                 if (!response.isSuccessful())
                 {
-                    Log.d("GlobalActivity", "code: " + response.code());
+                    Log.d(TAG, "code: " + response.code());
                     retrofitResponseListener.onFailure();
                     return;
                 }
 
                 // extract data from response
-                Log.d("GlobalActivity", "onResponse GOOD");
+                Log.d(TAG, "onResponse GOOD");
                 TotalResponse responseData = response.body();
                 Integer confirmed = responseData.getAllData().getConfirmed();
                 Integer deaths = responseData.getAllData().getDeaths();
@@ -81,11 +80,11 @@ public class GlobalInteractor {
                 retrofitResponseListener.onFailure();
                 if (t instanceof IOException)
                 {
-                    Log.d("GlobalActivity", "network failure");
+                    Log.d(TAG, "network failure");
                 }
                 else
                 {
-                    Log.d("GlobalActivity", "conversion issue");
+                    Log.d(TAG, "conversion issue");
                 }
             }
         });

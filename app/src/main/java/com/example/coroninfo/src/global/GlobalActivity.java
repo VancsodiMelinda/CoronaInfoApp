@@ -143,12 +143,11 @@ public class GlobalActivity extends AppCompatActivity implements GlobalScreen {
     {
         super.onResume();
         Log.d(TAG, "onResume");
-        globalPresenter.getGlobalTotal();
+        //globalPresenter.getGlobalTotal();
     }
 
     @Override
     public void showGlobalTotal(String[] totalData) {
-        // TODO: show data in global screen
         Log.d(TAG, "showGlobalTotal update data");
         Log.d(TAG, "data[0]: " + totalData[0]);
         Log.d(TAG, "data[1]: " + totalData[1]);

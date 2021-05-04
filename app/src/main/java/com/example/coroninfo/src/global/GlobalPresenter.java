@@ -19,7 +19,6 @@ public class GlobalPresenter {
 
     public void getGlobalTotal()
     {
-        // TODO: get data from API
         GlobalInteractor interactor = new GlobalInteractor();
         interactor.getGlobalTotalDataFromAPI(new RetrofitResponseListener() {
             @Override
