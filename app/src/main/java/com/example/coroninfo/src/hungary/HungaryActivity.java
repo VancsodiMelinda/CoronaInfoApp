@@ -65,9 +65,7 @@ public class HungaryActivity extends AppCompatActivity implements HungaryScreen 
 
     @Override
     public void showHungaryDaily(DataContainer[] dailyData) {
-        // TODO: show daily data in hungary screen
-
-        Log.d(TAG, "showHungaryDaily DIV");
+        Log.d(TAG, "showHungaryDaily");
         ListView dailyLv = (ListView) findViewById(R.id.HungaryListLv);
 
         HistoryListAdapter adapter = new HistoryListAdapter(this, R.layout.list_item, dailyData);
@@ -82,8 +80,6 @@ public class HungaryActivity extends AppCompatActivity implements HungaryScreen 
             public void onClick(View v) {
                 Intent intent = new Intent(HungaryActivity.this, GlobalActivity.class);
                 startActivity(intent);
-                //startActivity(new Intent(HungaryActivity.this, GlobalActivity.class));
-                //finish();
             }
         });
     }

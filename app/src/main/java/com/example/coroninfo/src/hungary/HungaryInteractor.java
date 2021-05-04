@@ -69,7 +69,6 @@ public class HungaryInteractor {
                     retrofitResponseListener.onFailure();
                     return;
                 }
-                // TODO
                 // extract data from response
                 Log.d(TAG, "onResponse GOOD");
                 TotalResponse responseData = response.body();
@@ -89,6 +88,8 @@ public class HungaryInteractor {
                 Log.d(TAG, "death: " + deaths);
                 Log.d(TAG, "recovered: " + recovered);
                 Log.d(TAG, "country: " + country);
+
+                // TODO: write data to db
 
                 // fire event
                 retrofitResponseListener.onSuccess();
@@ -134,6 +135,8 @@ public class HungaryInteractor {
                 Log.d(TAG, "country: " + country);
                 //Log.d(TAG, "dates: " + dates.toString());
 
+                // TODO: write data to db
+
                 // fire event
                 retrofitResponseListener.onSuccess();
             }
@@ -177,6 +180,8 @@ public class HungaryInteractor {
                 Log.d(TAG, "check url: " + call.request().url());
                 Log.d(TAG, "country: " + country);
                 //Log.d(TAG, "dates: " + dates.toString());
+
+                // TODO: write data to db
 
                 // fire event
                 retrofitResponseListener.onSuccess();

@@ -6,9 +6,8 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "history")
 public class HistoryEntity {
     @PrimaryKey
-    public int id;
-
     public String date;
+
     public String status;
     public int caseNumber;
 }

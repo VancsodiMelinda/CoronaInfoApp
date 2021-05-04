@@ -6,9 +6,8 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "total")
 public class TotalEntity {
     @PrimaryKey
-    public int id;
-
     public String country;  // Hungary or Global
+
     public int totalConfirmed;
     public int totalRecovered;
     public int totalDeath;

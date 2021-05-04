@@ -20,6 +20,7 @@ public class HungaryPresenter {
 
     public void getHungaryTotal()
     {
+        // GET DATA FROM API
         HungaryInteractor interactor = new HungaryInteractor();
         interactor.getHungaryTotalDataFromApi(new RetrofitResponseListener() {
             @Override
@@ -41,6 +42,7 @@ public class HungaryPresenter {
 
     public void getHungaryDaily()
     {
+        // GET DATA FROM API
         Log.d(TAG, "getHungaryDaily got called");
         HungaryInteractor interactor = new HungaryInteractor();
         interactor.getHungaryHistoryDataFromApi(new RetrofitResponseListener() {
