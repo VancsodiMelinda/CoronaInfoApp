@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.coroninfo.R;
 import com.example.coroninfo.src.hungary.HungaryActivity;
@@ -33,6 +34,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class GlobalActivity extends AppCompatActivity implements GlobalScreen {
 
     private GlobalPresenter globalPresenter = new GlobalPresenter();
+    private static final String TAG = "GlobalActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +44,14 @@ public class GlobalActivity extends AppCompatActivity implements GlobalScreen {
         configRightButton();  // go to Hungary activity
 
         // retrofit & retrofit service
+        /*
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://covid-api.mmediagroup.fr/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         TotalApi totalApiService = retrofit.create(TotalApi.class);
         HistoryApi historyApiService = retrofit.create(HistoryApi.class);
-
+        */
         // test TotalApi
         /*
         Call<TotalResponse> call = totalApiService.getTotalData("Hungary");
@@ -139,12 +142,29 @@ public class GlobalActivity extends AppCompatActivity implements GlobalScreen {
     protected void onResume()
     {
         super.onResume();
+        Log.d(TAG, "onResume");
         globalPresenter.getGlobalTotal();
     }
 
     @Override
-    public void showGlobalTotal(int[] totalData) {
+    public void showGlobalTotal(String[] totalData) {
         // TODO: show data in global screen
+        Log.d(TAG, "showGlobalTotal update data");
+        Log.d(TAG, "data[0]: " + totalData[0]);
+        Log.d(TAG, "data[1]: " + totalData[1]);
+        Log.d(TAG, "data[2]: " + totalData[2]);
+
+        TextView confirmedTv = (TextView) findViewById(R.id.GlobalTotalConfirmedTv);
+        confirmedTv.setText(totalData[0]);
+        confirmedTv.invalidate();
+
+        TextView deathsTv = (TextView) findViewById(R.id.GlobalTotalDeathsTv);
+        deathsTv.setText(totalData[1]);
+        deathsTv.invalidate();
+
+        TextView recoveredTv = (TextView) findViewById(R.id.GlobalTotalRecoveredTv);
+        recoveredTv.setText(totalData[2]);
+        recoveredTv.invalidate();
     }
 
     private void configRightButton()
