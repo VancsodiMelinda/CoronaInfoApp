@@ -28,4 +28,7 @@ public interface TotalDao {
 
     @Query("SELECT * FROM total")
     public TotalEntity[] loadAllTotalData();
+
+    @Query("SELECT * FROM total WHERE country = :param")
+    public TotalEntity loadTotalDataByCountry(String param);
 }

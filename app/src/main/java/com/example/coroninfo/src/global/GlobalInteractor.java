@@ -1,7 +1,11 @@
 package com.example.coroninfo.src.global;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.coroninfo.src.data.AppDatabase;
+import com.example.coroninfo.src.data.TotalEntity;
 import com.example.coroninfo.src.model.TotalResponse;
 import com.example.coroninfo.src.network.RetrofitResponseListener;
 import com.example.coroninfo.src.network.TotalApi;
@@ -18,14 +22,17 @@ public class GlobalInteractor {
     private static final String TAG = "GlobalInteractor";
     private TotalApi totalApiService;
     private String[] data = new String[3];
+    private Context context;
 
     public String[] getData()
     {
         return data;
     }
 
-    public GlobalInteractor()
+    public GlobalInteractor(Context context)
     {
+        this.context = context;
+
         // retrofit & retrofit service
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://covid-api.mmediagroup.fr/v1/")
@@ -49,7 +56,6 @@ public class GlobalInteractor {
                 }
 
                 // extract data from response
-                Log.d(TAG, "onResponse GOOD");
                 TotalResponse responseData = response.body();
                 Integer confirmed = responseData.getAllData().getConfirmed();
                 Integer deaths = responseData.getAllData().getDeaths();
@@ -60,16 +66,19 @@ public class GlobalInteractor {
                 data[1] = deaths.toString();
                 data[2] = recovered.toString();
 
-                // test
-                Log.d(TAG, "data[0]: " + data[0]);
-                Log.d(TAG, "data[1]: " + data[1]);
-                Log.d(TAG, "data[2]: " + data[2]);
+                // write data to db
 
-                Log.d(TAG, "check url: " + call.request().url());
-                Log.d(TAG, "confirmed: " + confirmed);
-                Log.d(TAG, "recovered: " + recovered);
-                Log.d(TAG, "death: " + deaths);
-                Log.d(TAG, "country: " + responseData.getAllData().getCountry());
+                AsyncTask.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        TotalEntity totalEntity = new TotalEntity();
+                        totalEntity.country = "Global";
+                        totalEntity.totalConfirmed = confirmed;
+                        totalEntity.totalRecovered = recovered;
+                        totalEntity.totalDeath = deaths;
+                        AppDatabase.getInstance(context).getTotalDao().insertTotalData(totalEntity);
+                    }
+                });
 
                 // fire event
                 retrofitResponseListener.onSuccess();

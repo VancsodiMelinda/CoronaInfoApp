@@ -1,13 +1,18 @@
 package com.example.coroninfo.src.global;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.coroninfo.src.data.AppDatabase;
+import com.example.coroninfo.src.data.TotalEntity;
 import com.example.coroninfo.src.network.RetrofitResponseListener;
 
 public class GlobalPresenter {
 
     GlobalScreen globalScreen;  // referencia az interface-re
     private static final String TAG = "GlobalPresenter";
+
 
     public void attachScreen(GlobalScreen globalScreen) {
         this.globalScreen = globalScreen;
@@ -17,19 +22,16 @@ public class GlobalPresenter {
         this.globalScreen = null;
     }
 
-    public void getGlobalTotal()
+    public void getGlobalTotal(Context context)
     {
-        GlobalInteractor interactor = new GlobalInteractor();
+        Log.d(TAG, "getGlobalTotal get data from API");
+        GlobalInteractor interactor = new GlobalInteractor(context);
         interactor.getGlobalTotalDataFromAPI(new RetrofitResponseListener() {
             @Override
             public void onSuccess() {
-                Log.d(TAG, "getGlobalTotal got data from API");
-                if (globalScreen != null)
-                {
-                    Log.d(TAG, "getGlobalTotal screen is NOT null");
+                if (globalScreen != null) {
                     globalScreen.showGlobalTotal(interactor.getData());
-                }
-                else {
+                } else {
                     Log.d(TAG, "getGlobalTotal screen IS null");
                 }
             }
@@ -40,4 +42,5 @@ public class GlobalPresenter {
             }
         });
     }
+
 }

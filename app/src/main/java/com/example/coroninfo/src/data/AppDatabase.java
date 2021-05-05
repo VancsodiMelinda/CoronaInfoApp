@@ -10,20 +10,21 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-@Database(entities = {TotalEntity.class, HistoryEntity.class}, version = 1)
+@Database(entities = {TotalEntity.class, HistoryEntity.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract TotalDao getTotalDao();
     public abstract HistoryDao getHistoryDao();
 
     private static AppDatabase db = null;
 
-    private AppDatabase() {};
+    public AppDatabase() {};
 
     public static AppDatabase getInstance(Context context)
     {
         if (db == null)
         {
-            db = Room.databaseBuilder(context, AppDatabase.class, "app-database").build();
+            //db = Room.databaseBuilder(context, AppDatabase.class, "app-database").build();
+            db = Room.databaseBuilder(context, AppDatabase.class, "app-database").fallbackToDestructiveMigration().build();
         }
 
         return db;
