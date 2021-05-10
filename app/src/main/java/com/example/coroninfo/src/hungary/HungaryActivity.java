@@ -48,8 +48,8 @@ public class HungaryActivity extends AppCompatActivity implements HungaryScreen 
     protected void onResume()
     {
         super.onResume();
-        //hungaryPresenter.getHungaryTotal();
-        //hungaryPresenter.getHungaryDaily();
+        hungaryPresenter.getHungaryTotal();
+        hungaryPresenter.getHungaryDaily();
     }
 
     @Override

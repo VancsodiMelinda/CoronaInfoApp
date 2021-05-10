@@ -10,14 +10,14 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-@Database(entities = {TotalEntity.class, HistoryEntity.class}, version = 2, exportSchema = false)
+@Database(entities = {TotalEntity.class, HistoryEntity.class}, version = 3, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract TotalDao getTotalDao();
     public abstract HistoryDao getHistoryDao();
 
     private static AppDatabase db = null;
 
-    public AppDatabase() {};
+    public AppDatabase() {}
 
     public static AppDatabase getInstance(Context context)
     {

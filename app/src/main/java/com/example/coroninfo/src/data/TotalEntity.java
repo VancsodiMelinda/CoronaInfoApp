@@ -13,4 +13,15 @@ public class TotalEntity {
     public int totalConfirmed;
     public int totalRecovered;
     public int totalDeath;
+
+    public TotalEntity(){}
+
+    public TotalEntity(int id, String country, int totalConfirmed, int totalRecovered, int totalDeath)
+    {
+        this.id = id;
+        this.country = country;
+        this.totalConfirmed = totalConfirmed;
+        this.totalRecovered = totalRecovered;
+        this.totalDeath = totalDeath;
+    }
 }

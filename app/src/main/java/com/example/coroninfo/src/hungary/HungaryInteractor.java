@@ -70,7 +70,6 @@ public class HungaryInteractor {
                     return;
                 }
                 // extract data from response
-                Log.d(TAG, "onResponse GOOD");
                 TotalResponse responseData = response.body();
                 Integer confirmed = responseData.getAllData().getConfirmed();
                 Integer deaths = responseData.getAllData().getDeaths();
@@ -82,14 +81,7 @@ public class HungaryInteractor {
                 totalData[1] = deaths.toString();
                 totalData[2] = recovered.toString();
 
-                // test
-                Log.d(TAG, "check url: " + call.request().url());
-                Log.d(TAG, "confirmed: " + confirmed);
-                Log.d(TAG, "death: " + deaths);
-                Log.d(TAG, "recovered: " + recovered);
-                Log.d(TAG, "country: " + country);
-
-                // TODO: write data to db
+                // write data to db
 
                 // fire event
                 retrofitResponseListener.onSuccess();

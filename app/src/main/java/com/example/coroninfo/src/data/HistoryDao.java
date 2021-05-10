@@ -26,6 +26,9 @@ public interface HistoryDao {
     @Delete
     public int deleteHistoryDataWithReturn(HistoryEntity historyData);
 
+    @Query("SELECT * FROM history WHERE date = :param")
+    public HistoryEntity loadHistoryDataByDate(String param);
+
     @Query("SELECT * FROM history")
     public HistoryEntity[] loadAllHistoryData();
 }

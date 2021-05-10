@@ -8,7 +8,9 @@ import com.example.coroninfo.src.data.HistoryEntity;
 import com.example.coroninfo.src.data.TotalDao;
 import com.example.coroninfo.src.data.TotalEntity;
 
-@Database(entities = {TotalEntity.class, HistoryEntity.class}, version = 1)
+import org.junit.Test;
+
+@Database(entities = {TotalEntity.class, HistoryEntity.class}, version = 3, exportSchema = false)
 public abstract class TestDatabase extends RoomDatabase {
     public abstract TotalDao getTotalDao();
     public abstract HistoryDao getHistoryDao();
