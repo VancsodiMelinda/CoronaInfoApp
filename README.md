@@ -4,6 +4,8 @@ Az elkészült alkalmazás így néz ki:
 
 ![](https://github.com/VancsodiMelinda/CoronaInfoApp/blob/master/images/finished%20screens%20transparent.png)
 
+Az alkalmazást fázisokban kellet elkészíteni, az egyes fázisok lépései, eredményei és a használt technológiák az alábbiakban kerülnek bemutatásra.
+
 # Specifikáció
 Célom egy olyan egyszerű, 3 ablakos mobil applikáció készítése volt, mely a koronavírus járvánnyal kapcsolatos információkat szolgáltat a felhasználó számára. Az ehhez szükséges adatok lekérdezése [nyílt API](https://github.com/M-Media-Group/Covid-19-API) segítségével történt.
 Az alkalmazás célplatformja az Android operációs rendszer, és álló helyzetű mobilra lett elkészítve.
@@ -18,7 +20,7 @@ Az alkalmazás informatív jellegéből adódóan a megvalósítandó főbb funk
   -	eddigi összes azonosított fertőzöttek száma
   -	eddigi összes felgyógyultak száma
   -	eddigi összes halálesetek száma
-- Magyarországi adatok lekérdezése:
+- magyarországi adatok lekérdezése:
   -	eddigi összes azonosított fertőzöttek száma
   -	eddigi összes halálesetek száma
   -	az előző 7-10 nap adatainak (napi új fertőzöttek és halálesetek száma) listázása
@@ -34,8 +36,17 @@ Az alkalmazás elrendezésének vázlatos ismertetése (lásd content és lofi w
 -	Hungary screen: A bal felső sarokban egy Magyarország térkép megjelenítése, tekintve hogy itt hazai adatok lesznek megjelenítve. Mellette az összesített hazai adatok kiírása. Ezek alatt pedig görgethető listaként az előző 7-10 nap adatainak megjelenítése.
 -	About screen: Itt kerül megjelenítésre az alkalmazás logója, az app neve és copyright információk.
 
-Content wireframe:
+## Content wireframe:
 ![](https://github.com/VancsodiMelinda/CoronaInfoApp/blob/master/images/content%20wireframe%20transparent.png)
 
-Lo-fi (low-fidelity) wireframe:
+## Lo-fi (low-fidelity) wireframe:
 ![](https://github.com/VancsodiMelinda/CoronaInfoApp/blob/master/images/lofi%20wireframe%20transparent.png)
+
+# Architektúra
+Az alkalmazás architektúrája: Model-View-Presenter (MVP)
+
+Az architektúra szerint minden egyes képernyőhöz tartozik egy Activity, mely implementálja a hozzá tartozó Screen interface-t, és a kettő közötti kapcsolatot a Presenter valósítja meg.
+
+A projekt az alábbi eszközöket/könyvtárakat használja:
+- függőségkezelő könyvtár: [Dagger](https://dagger.dev/)
+- continuous integration eszköz: [Travis CI](https://travis-ci.org/)
