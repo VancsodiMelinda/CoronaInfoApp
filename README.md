@@ -35,8 +35,7 @@ Az alkalmazás elrendezésének vázlatos ismertetése (lásd content és lofi w
 -	About screen: Itt kerül megjelenítésre az alkalmazás logója, az app neve és copyright információk.
 
 Content wireframe:
-
 ![](https://github.com/VancsodiMelinda/CoronaInfoApp/blob/master/images/content%20wireframe%20transparent.png)
 
 Lo-fi (low-fidelity) wireframe:
-
+![](https://github.com/VancsodiMelinda/CoronaInfoApp/blob/master/images/lofi%20wireframe%20transparent.png)
