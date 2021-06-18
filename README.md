@@ -36,6 +36,8 @@ Az alkalmazás elrendezésének vázlatos ismertetése (lásd content és lofi w
 -	Hungary screen: A bal felső sarokban egy Magyarország térkép megjelenítése, tekintve hogy itt hazai adatok lesznek megjelenítve. Mellette az összesített hazai adatok kiírása. Ezek alatt pedig görgethető listaként az előző 7-10 nap adatainak megjelenítése.
 -	About screen: Itt kerül megjelenítésre az alkalmazás logója, az app neve és copyright információk.
 
+Az applikáció tervezési lépéseként különféle wireframe-ek lettel ekészítve [Justinmind](https://www.justinmind.com/) használatával.
+
 ## Content wireframe:
 ![](https://github.com/VancsodiMelinda/CoronaInfoApp/blob/master/images/content%20wireframe%20transparent.png)
 
@@ -50,3 +52,13 @@ Az architektúra szerint minden egyes képernyőhöz tartozik egy Activity, mely
 A projekt az alábbi eszközöket/könyvtárakat használja:
 - függőségkezelő könyvtár: [Dagger](https://dagger.dev/)
 - continuous integration eszköz: [Travis CI](https://travis-ci.org/)
+
+## Hálózati réteg
+A hálózati hívások API leírása a [swagger editor](https://editor.swagger.io/) segítségével előállított .yaml formátumban került előállításra, melyből aztán a [Swagger Generator](https://github.com/swagger-api/swagger-codegen) segítségével lettek a szükséges api és modell osztályok legenerálva. A generált api interface-ek [Retrofit](https://square.github.io/retrofit/)-el kompatibilisek.
+
+## Adatbázis réteg
+Az adatbázis réteghez szükséges adatbázis, entity osztályok és az adatokhoz való hozzáférést biztosító DAO interface-ek létrehozása a [Room](https://developer.android.com/training/data-storage/room) könyvtár segítségével történik.
+
+# Analitika
+Az alkalmazásba integrálva lettek a [Firebase](https://firebase.google.com/) által nyújtott funkcionalitások, mint például crash-ek reportolására való [Crashlytics](https://firebase.google.com/docs/crashlytics), és az alkalmazás használatáról különféle analitikát gyűjtő [Google Analytics](https://firebase.google.com/docs/analytics).
+
