@@ -1,8 +1,8 @@
-A 'Mobilszoftver' laboratórium tárgyhoz elkészített Android alkalmazás.
+Ez a projekt a 'Mobilszoftver laboratórium' című tárgyhoz elkészített Android alkalmazást tartalmazza.
 
 # Specifikáció
-Célom egy olyan egyszerű, 3 ablakos mobil applikáció készítése, mely a koronavírus járvánnyal kapcsolatos információkat szolgáltat a felhasználó számára. Az ehhez szükséges adatok lekérdezése nyílt API segítségével fog történni.
-Az alkalmazás célplatformja az Android operációs rendszer, és álló helyzetű mobilra lesz elkészítve, külön fekvő nézet elkészítése nincs tervben.
+Célom egy olyan egyszerű, 3 ablakos mobil applikáció készítése volt, mely a koronavírus járvánnyal kapcsolatos információkat szolgáltat a felhasználó számára. Az ehhez szükséges adatok lekérdezése [nyílt API](https://github.com/M-Media-Group/Covid-19-API) segítségével történt.
+Az alkalmazás célplatformja az Android operációs rendszer, és álló helyzetű mobilra lett elkészítve.
 
 Fejlesztőkörnyezet: Android Studio
 Programozási nyelv: Java
